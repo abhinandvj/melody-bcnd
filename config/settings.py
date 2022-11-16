@@ -30,7 +30,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1']
 CORS_ALLOW_ALL_ORIGINS = False
-CORS_ALLOWED_ORIGINS = ['http://localhost:3000', 'http://127.0.0.1:3000']
+# CORS_ALLOWED_ORIGINS = ['http://localhost:3000', 'http://127.0.0.1:3000']
+
+X_FRAME_OPTIONS = '*'
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000',
+                        'https://hunger-cap-backend.abhinandv1.repl.co']
+
 
 # Application definition
 
@@ -54,7 +59,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    # To allow CORS (Cross-origin resource sharing)
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -109,12 +113,7 @@ DATABASES = {
 #     }
 # }
 
-# Heroku PostgreSQL Database
-# django_heroku.settings(locals())
 
-
-# Password validation
-# https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
